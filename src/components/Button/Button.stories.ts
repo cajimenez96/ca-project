@@ -5,6 +5,8 @@ import Button from './index';
  
 const meta: Meta<typeof Button> = {
   component: Button,
+  tags: ['autodocs'],
+  
 };
  
 export default meta;
@@ -13,7 +15,14 @@ type Story = StoryObj<typeof Button>;
 
 export const Primary: Story = {
   args: {
-    label: 'hola',
-    buttonStyle: 'switch',
+    label: 'Boton',
+    type: 'primary',
+  },
+};
+
+export const Secondary: Story = {
+  args: {
+    label: 'Boton',
+    type: 'secondary',
   },
 };

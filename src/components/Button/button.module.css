@@ -1,17 +1,17 @@
-.switch {
-  background-color: var(--color-naranja);
+.primary {
+  background-color: var(--primary);
   color: var(--color-crema);
 }
 
-.switch:hover {
+.primary:hover {
   background-color: var(--color-oscuro);
 }
 
-.link {
+.outline {
   color: var(--color-oscuro);
 }
 
-.link:hover {
+.outline:hover {
   color: var(--color-naranja);
 }
 

@@ -1,5 +1,4 @@
 import React, { ReactNode } from "react";
-// import { Link } from "react-router-dom";
 import styles from './button.module.css';
 
 interface ButtonProps {
@@ -8,25 +7,25 @@ interface ButtonProps {
   handleClick?: () => void;
   disabled?: boolean;
   className?: string;
-  buttonStyle?: Styles;
-  type?: "submit" | "button";
+  type?: Styles;
+  submit?: boolean;
 }
 
 type buttonComponentProps = Pick<ButtonProps, "children">
 
 const buttons = {
-  'outline': styles.outline,
-  'switch': styles.switch,
-  'link': styles.link
+  'primary': styles.primary,
+  'secondary': styles.secondary,
+  'outline': styles.outline
 } 
 
 type Styles = keyof typeof buttons;
 
-const handleStyle = (type: Styles, disabled: boolean) => {
-  if (disabled) return styles.disabled;
+// const handleStyle = (type: Styles, disabled: boolean) => {
+//   if (disabled) return styles.disabled;
 
-  return buttons[type]
-}
+//   return buttons[type]
+// }
 
 const ButtonContent = ({children}: buttonComponentProps) => {
   return (
@@ -41,20 +40,20 @@ const Button: React.FC<ButtonProps> = ({
   children,
   className,
   disabled = false,
-  buttonStyle = 'link',
-  type = "button",
+  type = 'primary',
+  submit = false,
   handleClick
 }) => {
 
   return (
     <button
-      className={`w-full rounded-xl border ${className} ${handleStyle(buttonStyle, disabled)} duration-200`}
+      className={`w-full max-w-[350px] rounded-xl border ${className} ${/*handleStyle(type, disabled)*/ buttons[type]} duration-200`}
       onClick={handleClick}
-      type={type}
+      type={submit ? "submit" : "button"}
+      disabled={disabled}
     >
       <ButtonContent>
-      {label}
-      {children}
+        {label}
       </ButtonContent>
     </button>
   );
